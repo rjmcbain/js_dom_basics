@@ -91,5 +91,77 @@ const even = document.querySelectorAll('li:nth-child(even)');
 
 for(i=0; i < odd.length; i++) {
   odd[i].style.backgroundColor = '#f4f4f4';
+
+}
+for(i=0; i < even.length; i++) {
   even[i].style.backgroundColor = '#ccc';
 }
+
+// Traversing the DOM
+
+const itemList = document.getElementById('items');
+
+// Parent Node
+// console.log(itemList.parentNode);
+itemList.parentNode.style.backgroundColor = "#f4f4f4";
+// console.log(itemList.parentNode.parentNode);
+itemList.parentNode.parentNode.parentNode.style.backgroundColor = "#dcca98";
+
+// Child Nodes
+// console.log(itemList.childNodes);
+const child = itemList.childNodes;
+// console.log(child);
+for(i=0; i < child.length; i++) {
+  console.log(i);
+}
+
+// console.log(itemList.children);
+// console.log(itemList.children[1]);
+itemList.children[1].style.backgroundColor = 'green';
+
+// First Child
+// console.log(itemList.firstChild); // Gets text node
+
+// First Element Child
+console.log(itemList.firstElementChild); // Gets actual li
+itemList.firstElementChild.innerHTML = 'Hello 1';
+
+// Last Element Child
+itemList.lastElementChild.innerHTML = 'Goodbye 5';
+
+// Next Sibling
+// console.log(itemList.nextSibling); // Gets Text Node
+
+// Next Element Sibling
+// console.log(itemList.nextElementSibling); 
+
+// Previous Sibling
+// console.log(itemList.previousSibling); // Gets Text Node
+
+// Previous ElementSibling
+// console.log(itemList.previousElementSibling); 
+itemList.previousElementSibling.style.color = 'orange';
+
+
+
+// Create Element
+
+const newDiv = document.createElement('div');
+
+newDiv.className = 'goodbye';
+console.log(newDiv);
+
+newDiv.id = 'helloOne';
+
+newDiv.setAttribute('title', 'Hello Div');
+
+const newDivText = document.createTextNode('Hello Again');
+
+newDiv.appendChild(newDivText);
+
+const container = document.querySelector('header .container');
+const h1 = document.querySelector('header h1');
+
+container.insertBefore(newDiv, h1);
+
+newDiv.style.fontSize = '30px';
