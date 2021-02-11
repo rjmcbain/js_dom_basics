@@ -57,17 +57,23 @@ title.style.borderBottom = 'solid 4px #ccc';
 
 const input = document.querySelector('input');
 input.value = "Hello World!!";
-console.log(input.value);
-
-const button = document.querySelector('.btn-dark');
-button.value = 'SEND';
+// console.log(input.value);
 
 
 document.addEventListener("click", buttons);
 
 function buttons(e) {
   e.preventDefault();
-  console.log(input.value);
+  input.value = "New Value";
+  // console.log("Clicked!");
+  // console.log(input.value);
+  // console.log(e);
+  // console.log(e.target);
+  // console.log(e.target.className);
+  // const output = document.getElementById('output');
+  // output.innerHTML = '<h3>' + e.target.className + '</h3>';
+
+  // console.log(e.type);
 }
 
 const item = document.querySelector('.list-group-item');
@@ -83,7 +89,7 @@ lastItem.style.color = 'blue'; // Changes last item
 
 const titles = document.querySelectorAll('.title');
 
-console.log(titles);
+// console.log(titles);
 titles[0].innerHTML = 'Changing These Items';
 
 const odd = document.querySelectorAll('li:nth-child(odd)');
@@ -112,7 +118,7 @@ itemList.parentNode.parentNode.parentNode.style.backgroundColor = "#dcca98";
 const child = itemList.childNodes;
 // console.log(child);
 for(i=0; i < child.length; i++) {
-  console.log(i);
+  // console.log(i);
 }
 
 // console.log(itemList.children);
@@ -120,19 +126,24 @@ for(i=0; i < child.length; i++) {
 itemList.children[1].style.backgroundColor = 'green';
 
 // First Child
+
 // console.log(itemList.firstChild); // Gets text node
 
 // First Element Child
-console.log(itemList.firstElementChild); // Gets actual li
+
+// console.log(itemList.firstElementChild); // Gets actual li
 itemList.firstElementChild.innerHTML = 'Hello 1';
 
 // Last Element Child
+
 itemList.lastElementChild.innerHTML = 'Goodbye 5';
 
 // Next Sibling
+
 // console.log(itemList.nextSibling); // Gets Text Node
 
 // Next Element Sibling
+
 // console.log(itemList.nextElementSibling); 
 
 // Previous Sibling
@@ -149,7 +160,7 @@ itemList.previousElementSibling.style.color = 'orange';
 const newDiv = document.createElement('div');
 
 newDiv.className = 'goodbye';
-console.log(newDiv);
+// console.log(newDiv);
 
 newDiv.id = 'helloOne';
 
@@ -165,3 +176,54 @@ const h1 = document.querySelector('header h1');
 container.insertBefore(newDiv, h1);
 
 newDiv.style.fontSize = '30px';
+
+
+// Events
+
+const button = document.querySelector('.btn-dark');
+button.value = 'SEND';
+button.addEventListener('click', buttons);
+button.addEventListener('click', runEvent);
+
+// button.addEventListener('dblclick', runEvent);
+// button.addEventListener('mousedown', runEvent);
+// button.addEventListener('mouseup', runEvent);
+
+const main = document.getElementById('main');
+main.addEventListener('mousemove', runEvent);
+
+function runEvent(e) {
+  e.preventDefault();
+  // console.log(`Event Type: ${e.type}`);
+  // console.log(e.target.value);
+  const output = document.getElementById('output');
+
+output.innerHTML = `<h3>MouseX: ${e.offsetX} </h3><h3>MouseY: ${e.offsetY}</h3>`;
+main.style.backgroundColor = `rgb(${e.offsetX}, ${e.offsetY}, 40)`;
+
+}
+
+function runNewEvent(e) {
+  // console.log(e.target.value);
+  box.childNodes[1].innerHTML = e.target.value;
+}
+
+const box = document.getElementById('box');
+box.style.cssText = 'width: 400px; height: 200px; background-color: yellow';
+const newH3 = document.createElement('h3');
+box.appendChild(newH3);
+// newH3.innerHTML = input.value;
+
+box.addEventListener('mouseenter', runEvent);
+
+const itemInput = document.querySelector('input[type="text"]');
+const form = document.querySelector('form');
+const select = document.querySelector('select');
+select.addEventListener('change', runEvent);
+form.addEventListener('submit', runEvent);
+
+
+const newh2 = document.createElement('h2');
+box.appendChild(newh2);
+
+itemInput.addEventListener('keydown', runNewEvent);
